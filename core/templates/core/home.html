@@ -6,19 +6,26 @@
 {% block content %}
 <main>
     <!-- Hero Section -->
-    <section class="hero-section text-center text-lg-start position-relative overflow-hidden pt-5" style="min-height: 100vh;">
-        <!-- Canvas for animated mesh background -->
-        <canvas id="hero-canvas" class="position-absolute top-0 start-0 w-100 h-100 z-0"></canvas>
-        
+    <section class="hero-section text-center text-lg-start position-relative overflow-hidden pt-5"
+        style="min-height: 100vh;">
+        <!-- Canvas for animated mesh background (Particles) -->
+        <canvas id="pCanvas" class="particles-canvas position-absolute top-0 start-0 w-100 h-100 z-0"></canvas>
+
         <div class="container position-relative z-1 h-100 d-flex align-items-center">
             <div class="row align-items-center w-100">
                 <div class="col-lg-6 mb-5 mb-lg-0">
-                    <h1 class="fw-bold display-3">Hi, I'm <br><span class="text-gradient">Alex Dev</span></h1>
+                    <h1 class="fw-bold display-3">Hi, I'm <br><span class="glitch-wrap d-inline-block"><span
+                                class="glitch-text" data-text="Gangul Weerasinghe">Gangul Weerasinghe</span></span></h1>
                     <div class="fs-4 fw-semibold mb-3 text-secondary">
-                        A <span class="typewriter-text text-primary"></span><span class="typewriter-cursor">|</span>
+                        An <span class="typewriter-text text-primary"></span><span class="typewriter-cursor">|</span>
                     </div>
-                    <p class="lead mb-4 max-w-md">Crafting premium digital experiences through elegant code and stunning design. I turn complex problems into beautiful, intuitive web applications.</p>
-                    
+                    <div class="lead mb-4 max-w-md reveal-prev" id="revealPrev">
+                        <div class="reveal-line" style="animation-duration:2.2s">Defending enterprise environments</div>
+                        <div class="reveal-line" style="animation-duration:2.2s; animation-delay:0.3s">through ethical hacking and</div>
+                        <div class="reveal-line" style="animation-duration:2.2s; animation-delay:0.6s">secure development. I turn complex</div>
+                        <div class="reveal-line" style="animation-duration:2.2s; animation-delay:0.9s">vulnerabilities into robust digital architectures.</div>
+                    </div>
+
                     <div class="d-flex flex-wrap gap-3 justify-content-center justify-content-lg-start mt-4">
                         <a href="#portfolio" class="btn btn-primary btn-lg btn-hover-effect">
                             View My Work <i class="fa-solid fa-arrow-right ms-2 btn-icon"></i>
@@ -29,31 +36,49 @@
                     </div>
 
                     <!-- Stats Bar -->
-                    <div class="stats-bar mt-5 pt-4 border-top border-secondary border-opacity-25 d-flex gap-4 flex-wrap justify-content-center justify-content-lg-start">
+                    <div
+                        class="stats-bar mt-5 pt-4 border-top border-secondary border-opacity-25 d-flex gap-4 flex-wrap justify-content-center justify-content-lg-start">
                         <div class="stat-item text-start">
                             <h4 class="text-gradient fw-bold mb-0">5+</h4>
-                            <small class="text-secondary text-uppercase fw-bold" style="font-size: 0.7rem; letter-spacing: 1px;">Projects</small>
+                            <small class="text-secondary text-uppercase fw-bold"
+                                style="font-size: 0.7rem; letter-spacing: 1px;">Projects</small>
                         </div>
                         <div class="stat-item text-start">
-                            <h4 class="text-gradient fw-bold mb-0">3 Yrs</h4>
-                            <small class="text-secondary text-uppercase fw-bold" style="font-size: 0.7rem; letter-spacing: 1px;">Experience</small>
+                            <h4 class="text-gradient fw-bold mb-0">1.5+ Yrs</h4>
+                            <small class="text-secondary text-uppercase fw-bold"
+                                style="font-size: 0.7rem; letter-spacing: 1px;">Experience</small>
                         </div>
                         <div class="stat-item text-start">
-                            <h4 class="text-gradient fw-bold mb-0">10+</h4>
-                            <small class="text-secondary text-uppercase fw-bold" style="font-size: 0.7rem; letter-spacing: 1px;">Clients</small>
+                            <h4 class="text-gradient fw-bold mb-0">1st Place</h4>
+                            <small class="text-secondary text-uppercase fw-bold"
+                                style="font-size: 0.7rem; letter-spacing: 1px;">CTF Winner</small>
                         </div>
                     </div>
                 </div>
 
                 <div class="col-lg-6 z-1 position-relative mt-5 mt-lg-0">
                     <div class="hero-image-wrapper mx-auto">
-                        <div class="hero-blob-bg"></div>
-                        <img src="{% static 'images/my-image-cutout.png' %}" alt="Profile" class="img-fluid profile-cutout">
+                        <div class="blob-container position-absolute top-50 start-50 translate-middle z-0"
+                            style="width: 650px; height: 550px;">
+                            <svg class="blob-svg w-100 h-100" viewBox="0 0 100 100" preserveAspectRatio="none">
+                                <defs>
+                                    <linearGradient id="blobGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" stop-color="#0d6efd" stop-opacity="0.8" />
+                                        <stop offset="100%" stop-color="#8b5cf6" stop-opacity="0.4" />
+                                    </linearGradient>
+                                </defs>
+                                <path class="blob-path"
+                                    d="M42,10 Q72,8 80,35 Q92,62 72,78 Q52,96 28,84 Q4,72 6,46 Q8,20 42,10Z"
+                                    fill="url(#blobGrad)" />
+                            </svg>
+                        </div>
+                        <img src="{% static 'images/IMG_5990-cutout.png' %}" alt="Profile"
+                            class="img-fluid profile-cutout">
                     </div>
                 </div>
             </div>
         </div>
-        
+
         <!-- Scroll Indicator -->
         <div class="scroll-indicator position-absolute bottom-0 start-50 translate-middle-x mb-4 z-1 text-center">
             <span class="d-block text-secondary small mb-2 text-uppercase" style="letter-spacing: 2px;">Scroll</span>
@@ -68,22 +93,22 @@
             <div class="row g-5 align-items-center">
                 <div class="col-lg-6">
                     <div class="glass-card h-100">
-                        <h3 class="mb-4"><i class="fa-solid fa-code text-primary me-2"></i> Who am I?</h3>
-                        <p>I'm a full-stack engineer driven by a passion for creating pixel-perfect, highly performant web applications. With a sharp eye for aesthetic design and deep knowledge of robust architectures, I bridge the gap between form and function.</p>
-                        <p>Whether it's designing a dynamic frontend interface or architecting a scalable backend system, I strive to deliver premium digital products that wow users.</p>
+                        <h3 class="mb-4"><i class="fa-solid fa-user-shield text-primary me-2"></i> Who am I?</h3>
+                        <p>I am a dynamic cybersecurity professional with over 1.5 years of experience specializing in offensive security, mobile security, and web application security. I have a proven track record in enterprise banking environments, where I have conducted internal network penetration tests, validated Mobile RASP tools, and managed EDR platforms to strengthen organizational defenses.</p>
+                        <p>As a BSc (Hons) in Cyber Security graduate from SLIIT, I bridge the gap between technical exploitation and secure software engineering. My work focuses on building "secure-by-design" systems while maintaining an active presence in the competitive CTF community.</p>
                         <div class="mt-4 pt-3 border-top border-secondary opacity-75">
                             <div class="row text-center">
                                 <div class="col-4">
-                                    <h4 class="text-gradient mb-0 fs-2">5+</h4>
+                                    <h4 class="text-gradient mb-0 fs-2">1.5+</h4>
                                     <small class="text-secondary text-uppercase fw-bold">Years Exp</small>
                                 </div>
                                 <div class="col-4">
-                                    <h4 class="text-gradient mb-0 fs-2">30+</h4>
+                                    <h4 class="text-gradient mb-0 fs-2">5+</h4>
                                     <small class="text-secondary text-uppercase fw-bold">Projects</small>
                                 </div>
                                 <div class="col-4">
-                                    <h4 class="text-gradient mb-0 fs-2">100%</h4>
-                                    <small class="text-secondary text-uppercase fw-bold">Passion</small>
+                                    <h4 class="text-gradient mb-0 fs-2">1st</h4>
+                                    <small class="text-secondary text-uppercase fw-bold">CTF Winner</small>
                                 </div>
                             </div>
                         </div>
@@ -91,45 +116,91 @@
                 </div>
                 <div class="col-lg-6">
                     <div class="glass-card h-100">
-                        <h3 class="mb-4"><i class="fa-solid fa-layer-group text-primary me-2"></i> Technical Arsenal</h3>
+                        <h3 class="mb-4"><i class="fa-solid fa-layer-group text-primary me-2"></i> Technical Arsenal
+                        </h3>
                         <div class="skills mt-4">
                             <div class="skill-item">
                                 <div class="skill-info">
-                                    <span>Python & Django</span>
+                                    <span>Offensive Security & Pentesting</span>
                                     <span>95%</span>
                                 </div>
                                 <div class="progress">
-                                    <div class="progress-bar" role="progressbar" style="width: 95%" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100"></div>
+                                    <div class="progress-bar" role="progressbar" style="width: 95%" aria-valuenow="95"
+                                        aria-valuemin="0" aria-valuemax="100"></div>
                                 </div>
                             </div>
                             <div class="skill-item">
                                 <div class="skill-info">
-                                    <span>JavaScript & React</span>
+                                    <span>Red Team Operations & AV Evasion</span>
                                     <span>90%</span>
                                 </div>
                                 <div class="progress">
-                                    <div class="progress-bar" role="progressbar" style="width: 90%" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
+                                    <div class="progress-bar" role="progressbar" style="width: 90%" aria-valuenow="90"
+                                        aria-valuemin="0" aria-valuemax="100"></div>
                                 </div>
                             </div>
                             <div class="skill-item">
                                 <div class="skill-info">
-                                    <span>Modern CSS & Animations</span>
-                                    <span>95%</span>
-                                </div>
-                                <div class="progress">
-                                    <div class="progress-bar" role="progressbar" style="width: 95%" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                            </div>
-                            <div class="skill-item">
-                                <div class="skill-info">
-                                    <span>UI / UX Design</span>
+                                    <span>Full-Stack Development (Python/MERN)</span>
                                     <span>85%</span>
                                 </div>
                                 <div class="progress">
-                                    <div class="progress-bar" role="progressbar" style="width: 85%" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
+                                    <div class="progress-bar" role="progressbar" style="width: 85%" aria-valuenow="85"
+                                        aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-info">
+                                    <span>Cloud & DevSecOps (K8s/Azure)</span>
+                                    <span>80%</span>
+                                </div>
+                                <div class="progress">
+                                    <div class="progress-bar" role="progressbar" style="width: 80%" aria-valuenow="80"
+                                        aria-valuemin="0" aria-valuemax="100"></div>
                                 </div>
                             </div>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications Section -->
+    <section id="certifications" class="position-relative bg-dark bg-opacity-25">
+        <div class="container">
+            <h2 class="section-title fw-bold">Professional <span class="text-gradient">Qualifications</span></h2>
+            <div class="row g-5 justify-content-center align-items-center">
+                <!-- HTB CWES -->
+                <div class="col-md-6 col-lg-3 text-center">
+                    <div class="cert-item mb-4">
+                        <a href="https://www.credly.com/badges/7633c9d0-9fb4-4a95-bd5d-8d01fcfef85b/public_url" target="_blank" class="d-block transition-transform hover-scale">
+                            <img src="{% static 'images/cwes.png' %}" alt="HTB CWES" class="img-fluid cert-logo shadow-lg" style="height: 160px; width: auto; object-fit: contain; filter: drop-shadow(0 0 10px rgba(59, 130, 246, 0.3));">
+                        </a>
+                    </div>
+                </div>
+                <!-- eJPT -->
+                <div class="col-md-6 col-lg-3 text-center">
+                    <div class="cert-item mb-4">
+                        <a href="https://certs.ine.com/20c9c1b9-3f00-40ba-a4a6-c3a5776dccf5#acc.FsSW8UxV" target="_blank" class="d-block transition-transform hover-scale">
+                            <img src="{% static 'images/ejpt.png' %}" alt="eJPT" class="img-fluid cert-logo shadow-lg" style="height: 160px; width: auto; object-fit: contain; filter: drop-shadow(0 0 10px rgba(59, 130, 246, 0.3));">
+                        </a>
+                    </div>
+                </div>
+                <!-- CRTA -->
+                <div class="col-md-6 col-lg-3 text-center">
+                    <div class="cert-item mb-4">
+                        <a href="https://labs.cyberwarfare.live/credential/achievement/6885b4dd91e1e7894fd4da4e" target="_blank" class="d-block transition-transform hover-scale">
+                            <img src="{% static 'images/crta.png' %}" alt="CRTA" class="img-fluid cert-logo shadow-lg" style="height: 160px; width: auto; object-fit: contain; filter: drop-shadow(0 0 10px rgba(59, 130, 246, 0.3));">
+                        </a>
+                    </div>
+                </div>
+                <!-- ISO 27001 -->
+                <div class="col-md-6 col-lg-3 text-center">
+                    <div class="cert-item mb-4">
+                        <a href="https://learn.mastermindassurance.com/certificates/nwoqe9eb83" target="_blank" class="d-block transition-transform hover-scale">
+                            <img src="{% static 'images/leadauditor.png' %}" alt="ISO 27001 Lead Auditor" class="img-fluid cert-logo shadow-lg" style="height: 160px; width: auto; object-fit: contain; filter: drop-shadow(0 0 10px rgba(59, 130, 246, 0.3));">
+                        </a>
                     </div>
                 </div>
             </div>
@@ -141,54 +212,50 @@
         <div class="container">
             <h2 class="section-title fw-bold">Featured <span class="text-gradient">Work</span></h2>
             <div class="row g-4">
-                
+
                 <!-- Project 1 -->
-                <div class="col-lg-6">
-                    <div class="portfolio-card">
-                        <div class="portfolio-img-wrapper">
-                            <img src="{% static 'images/project1.png' %}" alt="Project 1">
-                            <div class="portfolio-overlay">
-                                <div class="d-flex justify-content-between align-items-center w-100">
-                                    <a href="#" class="btn btn-primary rounded-circle shadow-lg" style="width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; padding: 0;">
-                                        <i class="fa-solid fa-arrow-right"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
+                <div class="col-lg-4">
+                    <div class="portfolio-card h-100">
                         <div class="portfolio-content">
-                            <h3 class="portfolio-title">Analytics Dashboard</h3>
-                            <p class="text-secondary mb-0">A powerful, dark-themed analytics dashboard featuring beautiful data visualizations and real-time metrics processing.</p>
+                            <h3 class="portfolio-title">Federated Learning Defense Framework</h3>
+                            <p class="text-secondary mb-3">A production-grade platform engineered to defend against Sybil, Poisoning, and Inference attacks using a custom PKI Central Authority.</p>
                             <div class="portfolio-tags">
-                                <span class="tag">React</span>
-                                <span class="tag">Django API</span>
-                                <span class="tag">Chart.js</span>
+                                <span class="tag">Kubernetes</span>
+                                <span class="tag">Docker</span>
+                                <span class="tag">Python (Flower)</span>
+                                <span class="tag">Prometheus</span>
                             </div>
                         </div>
                     </div>
                 </div>
 
                 <!-- Project 2 -->
-                <div class="col-lg-6">
-                    <div class="portfolio-card">
-                        <div class="portfolio-img-wrapper">
-                            <img src="{% static 'images/project2.png' %}" alt="Project 2">
-                            <div class="portfolio-overlay">
-                                <div class="d-flex justify-content-between align-items-center w-100">
-                                    <a href="#" class="btn btn-primary rounded-circle shadow-lg" style="width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; padding: 0;">
-                                        <i class="fa-solid fa-arrow-right"></i>
-                                    </a>
-                                </div>
+                <div class="col-lg-4">
+                    <div class="portfolio-card h-100">
+                        <div class="portfolio-content">
+                            <h3 class="portfolio-title">Deep Learning Malware Classification</h3>
+                            <p class="text-secondary mb-3">A ResNet-based CNN that classifies 25 malware families with 95.7% accuracy using image-based binary analysis.</p>
+                            <div class="portfolio-tags">
+                                <span class="tag">TensorFlow</span>
+                                <span class="tag">Keras</span>
+                                <span class="tag">ResNet</span>
+                                <span class="tag">Flask</span>
                             </div>
                         </div>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="col-lg-4">
+                    <div class="portfolio-card h-100">
                         <div class="portfolio-content">
-                            <h3 class="portfolio-title">Lumina E-Commerce</h3>
-                            <div class="d-flex justify-content-between align-items-start">
-                                <p class="text-secondary mb-0">An elegant, minimalist e-commerce platform focused on high-conversion flow and seamless mobile experience.</p>
-                            </div>
+                            <h3 class="portfolio-title">DevSecOps E-Commerce Platform</h3>
+                            <p class="text-secondary mb-3">A full-stack Django application featuring automated CI/CD with CodeQL SAST and Dependabot for supply-chain security.</p>
                             <div class="portfolio-tags">
-                                <span class="tag">Next.js</span>
+                                <span class="tag">Django</span>
                                 <span class="tag">PostgreSQL</span>
-                                <span class="tag">Tailwind</span>
+                                <span class="tag">GitHub Actions</span>
+                                <span class="tag">CodeQL</span>
                             </div>
                         </div>
                     </div>
@@ -206,21 +273,24 @@
                 <div class="col-lg-8">
                     <div class="glass-card">
                         <div class="text-center mb-5">
-                            <p class="lead text-secondary">Have an exciting project in mind? Let's build something amazing together.</p>
+                            <p class="lead text-secondary">Have an exciting security challenge or a development project in mind? Let’s build something secure together.</p>
+                            <p class="text-primary fw-bold">gangulsw@gmail.com</p>
                         </div>
-                        <form>
+                        <form action="mailto:gangulsw@gmail.com" method="post" enctype="text/plain">
                             <div class="row g-4">
                                 <div class="col-md-6">
                                     <label for="name" class="form-label">Name</label>
-                                    <input type="text" class="form-control" id="name" placeholder="John Doe" required>
+                                    <input type="text" class="form-control" id="name" name="name" placeholder="Your Name" required>
                                 </div>
                                 <div class="col-md-6">
                                     <label for="email" class="form-label">Email address</label>
-                                    <input type="email" class="form-control" id="email" placeholder="john@example.com" required>
+                                    <input type="email" class="form-control" id="email" name="email" placeholder="name@example.com"
+                                        required>
                                 </div>
                                 <div class="col-12">
                                     <label for="message" class="form-label">Message</label>
-                                    <textarea class="form-control" id="message" rows="5" placeholder="Tell me about your project..." required></textarea>
+                                    <textarea class="form-control" id="message" name="message" rows="5"
+                                        placeholder="Tell me about your project or security challenge..." required></textarea>
                                 </div>
                                 <div class="col-12 text-center mt-4">
                                     <button type="submit" class="btn btn-primary btn-lg px-5 py-3 fs-5 w-100 w-md-auto">
@@ -234,7 +304,70 @@
             </div>
         </div>
         <!-- Decorative background elements -->
-        <div class="position-absolute bottom-0 start-50 translate-middle-x w-100 h-50 opacity-25" style="background: radial-gradient(ellipse at bottom, rgba(59, 130, 246, 0.3) 0%, transparent 60%); z-index: 0; pointer-events: none;"></div>
+        <div class="position-absolute bottom-0 start-50 translate-middle-x w-100 h-50 opacity-25"
+            style="background: radial-gradient(ellipse at bottom, rgba(59, 130, 246, 0.3) 0%, transparent 60%); z-index: 0; pointer-events: none;">
+        </div>
     </section>
 </main>
+
+<script>
+    // Effect 2: Particles
+    const pCanvas = document.getElementById('pCanvas');
+    if (pCanvas) {
+        const ctx = pCanvas.getContext('2d');
+        let W = pCanvas.offsetWidth || window.innerWidth;
+        let H = pCanvas.offsetHeight || window.innerHeight;
+        pCanvas.width = W; pCanvas.height = H;
+        const pts = Array.from({ length: 40 }, () => ({
+            x: Math.random() * W, y: Math.random() * H,
+            vx: (Math.random() - 0.5) * 0.4, vy: (Math.random() - 0.5) * 0.4
+        }));
+
+        window.addEventListener('resize', () => {
+            W = pCanvas.offsetWidth || window.innerWidth;
+            H = pCanvas.offsetHeight || window.innerHeight;
+            pCanvas.width = W;
+            pCanvas.height = H;
+        });
+
+        function draw() {
+            ctx.clearRect(0, 0, W, H);
+            pts.forEach(p => {
+                p.x += p.vx; p.y += p.vy;
+                if (p.x < 0 || p.x > W) p.vx *= -1;
+                if (p.y < 0 || p.y > H) p.vy *= -1;
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, 1.5, 0, Math.PI * 2);
+                ctx.fillStyle = 'rgba(148,130,255,0.7)';
+                ctx.fill();
+            });
+            for (let i = 0; i < pts.length; i++) for (let j = i + 1; j < pts.length; j++) {
+                const dx = pts[i].x - pts[j].x, dy = pts[i].y - pts[j].y;
+                const d = Math.sqrt(dx * dx + dy * dy);
+                if (d < 80) {
+                    ctx.beginPath();
+                    ctx.moveTo(pts[i].x, pts[i].y);
+                    ctx.lineTo(pts[j].x, pts[j].y);
+                    ctx.strokeStyle = `rgba(148,130,255,${(1 - d / 80) * 0.3})`;
+                    ctx.lineWidth = 0.5;
+                    ctx.stroke();
+                }
+            }
+            requestAnimationFrame(draw);
+        }
+        draw();
+    }
+
+    // Effect 6: Reveal text mask
+    const revealPrev = document.getElementById('revealPrev');
+    if (revealPrev) {
+        setInterval(() => {
+            revealPrev.querySelectorAll('.reveal-line').forEach((el, i) => {
+                el.style.animation = 'none';
+                void el.offsetWidth;
+                el.style.animation = `revealText 2.2s ease forwards ${i * 0.3}s`;
+            });
+        }, 6000);
+    }
+</script>
 {% endblock %}

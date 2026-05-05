@@ -112,7 +112,7 @@ document.head.appendChild(styleElement);
 // Typewriter Effect
 const typeWriterElement = document.querySelector('.typewriter-text');
 if (typeWriterElement) {
-    const words = ["Full Stack Developer", "UI/UX Designer", "Problem Solver"];
+    const words = ["Offensive Security Specialist", "Penetration Tester", "Red Team Analyst", "Security Researcher"];
     let wordIndex = 0;
     let charIndex = 0;
     let isDeleting = false;
